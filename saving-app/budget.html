@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaultly - Budget</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">V</div>
+      <div>
+        <h1>Vaultly</h1>
+        <p class="tagline">Budget & Expenses</p>
+      </div>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="savings.html">Savings</a>
+      <a href="budget.html">Budget</a>
+      <a href="calculators.html">Calculators</a>
+    </nav>
+  </header>
+
+  <main class="page-container">
+    <section class="card">
+      <h2>Monthly Budget Planner</h2>
+
+      <div class="form-grid">
+        <input type="number" id="monthlyIncome" placeholder="Monthly income (£)">
+        <input type="number" id="budgetNeeds" placeholder="Needs budget (£)">
+        <input type="number" id="budgetWants" placeholder="Wants budget (£)">
+        <input type="number" id="budgetSavings" placeholder="Savings budget (£)">
+      </div>
+
+      <button onclick="saveBudget()">Save Budget</button>
+      <div id="budgetResult" class="result-box"></div>
+    </section>
+
+    <section class="card">
+      <h2>Add Expense</h2>
+
+      <div class="form-grid">
+        <input type="text" id="expenseName" placeholder="Expense name">
+        <input type="number" id="expenseAmount" placeholder="Amount (£)">
+        <input type="date" id="expenseDate">
+        <select id="expenseCategory">
+          <option value="Needs">Needs</option>
+          <option value="Wants">Wants</option>
+          <option value="Savings">Savings</option>
+          <option value="Bills">Bills</option>
+          <option value="Transport">Transport</option>
+          <option value="Food">Food</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <button onclick="addExpense()">Add Expense</button>
+    </section>
+
+    <section class="card">
+      <div class="section-row">
+        <h2>Expenses</h2>
+        <button class="secondary-btn" onclick="clearExpenses()">Clear Expenses</button>
+      </div>
+
+      <div id="expensesList"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

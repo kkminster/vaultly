@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaultly - Savings</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="savings-extra.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">V</div>
+      <div>
+        <h1>Vaultly</h1>
+        <p class="tagline">Savings Goals</p>
+      </div>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="savings.html">Savings</a>
+      <a href="budget.html">Budget</a>
+      <a href="calculators.html">Calculators</a>
+    </nav>
+  </header>
+
+  <main class="page-container">
+    <section class="card">
+      <h2>Add a New Goal</h2>
+
+      <div class="form-grid">
+        <input type="text" id="goalName" placeholder="Goal name">
+        <input type="number" id="goalAmount" placeholder="Target amount (£)">
+        <input type="number" id="goalStart" placeholder="Starting amount (£)">
+        <input type="date" id="goalDeadline">
+        <select id="goalCategory">
+          <option value="Emergency Fund">Emergency Fund</option>
+          <option value="Holiday">Holiday</option>
+          <option value="Car">Car</option>
+          <option value="House Deposit">House Deposit</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Bills">Bills</option>
+          <option value="Other">Other</option>
+        </select>
+        <select id="goalPriority">
+          <option value="High">High Priority</option>
+          <option value="Medium">Medium Priority</option>
+          <option value="Low">Low Priority</option>
+        </select>
+        <input type="number" id="goalRecurring" placeholder="Recurring deposit (£)">
+        <select id="goalRecurringType">
+          <option value="weekly">Weekly recurring</option>
+          <option value="monthly">Monthly recurring</option>
+        </select>
+      </div>
+
+      <textarea id="goalNotes" placeholder="Notes about this goal"></textarea>
+
+      <button onclick="addGoal()">Add Goal</button>
+    </section>
+
+    <section class="stats-grid">
+      <div class="mini-card">
+        <p>Total Goals</p>
+        <h3 id="totalGoals">0</h3>
+      </div>
+      <div class="mini-card">
+        <p>Total Saved</p>
+        <h3 id="totalSaved">£0.00</h3>
+      </div>
+      <div class="mini-card">
+        <p>Total Remaining</p>
+        <h3 id="totalRemaining">£0.00</h3>
+      </div>
+      <div class="mini-card">
+        <p>Completed Goals</p>
+        <h3 id="completedGoals">0</h3>
+      </div>
+    </section>
+
+    <section class="stats-grid">
+      <div class="mini-card">
+        <p>Average Progress</p>
+        <h3 id="avgProgress">0%</h3>
+      </div>
+      <div class="mini-card">
+        <p>Due Soon</p>
+        <h3 id="dueSoonCount">0</h3>
+      </div>
+      <div class="mini-card">
+        <p>Archived Goals</p>
+        <h3 id="archivedCount">0</h3>
+      </div>
+      <div class="mini-card">
+        <p>Recurring Total</p>
+        <h3 id="recurringTotal">£0.00</h3>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-row">
+        <h2>Savings Tools</h2>
+      </div>
+
+      <div class="form-grid">
+        <input type="text" id="goalSearch" placeholder="Search goals" oninput="displayGoals()">
+        <select id="goalFilterCategory" onchange="displayGoals()">
+          <option value="all">All categories</option>
+          <option value="Emergency Fund">Emergency Fund</option>
+          <option value="Holiday">Holiday</option>
+          <option value="Car">Car</option>
+          <option value="House Deposit">House Deposit</option>
+          <option value="Shopping">Shopping</option>
+          <option value="Bills">Bills</option>
+          <option value="Other">Other</option>
+        </select>
+        <select id="goalFilterStatus" onchange="displayGoals()">
+          <option value="active">Active goals</option>
+          <option value="archived">Archived goals</option>
+          <option value="all">All goals</option>
+        </select>
+        <select id="goalSort" onchange="displayGoals()">
+          <option value="default">Sort: Default</option>
+          <option value="progressHigh">Progress: High to Low</option>
+          <option value="progressLow">Progress: Low to High</option>
+          <option value="deadlineSoon">Deadline: Soonest</option>
+          <option value="targetHigh">Target: High to Low</option>
+          <option value="savedHigh">Saved: High to Low</option>
+          <option value="priority">Priority</option>
+        </select>
+      </div>
+
+      <div class="goal-actions">
+        <button onclick="applyRecurringDeposits()">Apply Recurring Deposits</button>
+        <button class="secondary-btn" onclick="exportGoalsCsv()">Export Goals CSV</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-row">
+        <h2>Your Goals</h2>
+        <button class="secondary-btn" onclick="clearAllGoals()">Clear All Goals</button>
+      </div>
+
+      <div id="goals"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script src="savings-extra.js"></script>
+</body>
+</html>
