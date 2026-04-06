@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaultly - Calculators</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">V</div>
+      <div>
+        <h1>Vaultly</h1>
+        <p class="tagline">Finance Calculators</p>
+      </div>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="savings.html">Savings</a>
+      <a href="budget.html">Budget</a>
+      <a href="calculators.html">Calculators</a>
+    </nav>
+  </header>
+
+  <main class="page-container">
+    <section class="card">
+      <h2>UK Loan Calculator</h2>
+      <div class="form-grid">
+        <input type="number" id="loanAmount" placeholder="Loan amount (£)">
+        <input type="number" id="interestRate" placeholder="Interest rate (%)" step="0.1">
+        <input type="number" id="loanYears" placeholder="Loan term (years)">
+      </div>
+      <button onclick="calculateLoan()">Calculate Loan</button>
+      <div id="loanResult" class="result-box"></div>
+      <div id="loanTable" class="result-box"></div>
+    </section>
+
+    <section class="card">
+      <h2>Mortgage Calculator</h2>
+      <div class="form-grid">
+        <input type="number" id="mortgageAmount" placeholder="Property price (£)">
+        <input type="number" id="mortgageRate" placeholder="Interest rate (%)" step="0.1">
+        <input type="number" id="mortgageYears" placeholder="Mortgage term (years)">
+        <input type="number" id="depositAmount" placeholder="Deposit (£)">
+      </div>
+      <button onclick="calculateMortgage()">Calculate Mortgage</button>
+      <div id="mortgageResult" class="result-box"></div>
+    </section>
+
+    <section class="card">
+      <h2>Mortgage Affordability</h2>
+      <div class="form-grid">
+        <input type="number" id="affordIncome" placeholder="Annual income (£)">
+        <input type="number" id="affordDeposit" placeholder="Deposit (£)">
+      </div>
+      <button onclick="calculateAffordability()">Calculate Affordability</button>
+      <div id="affordResult" class="result-box"></div>
+    </section>
+
+    <section class="card">
+      <h2>Savings Interest Calculator</h2>
+      <div class="form-grid">
+        <input type="number" id="interestStart" placeholder="Starting savings (£)">
+        <input type="number" id="interestMonthly" placeholder="Monthly contribution (£)">
+        <input type="number" id="interestRateCalc" placeholder="Interest rate (%)" step="0.1">
+        <input type="number" id="interestYears" placeholder="Years">
+      </div>
+      <button onclick="calculateInterest()">Calculate Growth</button>
+      <div id="interestResult" class="result-box"></div>
+    </section>
+
+    <section class="card">
+      <h2>Debt Payoff Calculator</h2>
+      <div class="form-grid">
+        <input type="number" id="debtBalance" placeholder="Debt balance (£)">
+        <input type="number" id="debtRate" placeholder="Interest rate (%)" step="0.1">
+        <input type="number" id="debtPayment" placeholder="Monthly payment (£)">
+      </div>
+      <button onclick="calculateDebtPayoff()">Calculate Payoff</button>
+      <div id="debtResult" class="result-box"></div>
+    </section>
+
+    <section class="card">
+      <h2>Debt Snowball vs Avalanche</h2>
+      <p class="small-text">Uses two example debts for now.</p>
+      <div class="form-grid">
+        <input type="number" id="snowballDebt1" placeholder="Debt 1 balance (£)">
+        <input type="number" id="snowballRate1" placeholder="Debt 1 rate (%)">
+        <input type="number" id="snowballDebt2" placeholder="Debt 2 balance (£)">
+        <input type="number" id="snowballRate2" placeholder="Debt 2 rate (%)">
+      </div>
+      <button onclick="calculateDebtStrategies()">Compare Strategies</button>
+      <div id="debtStrategyResult" class="result-box"></div>
+    </section>
+
+    <section class="card">
+      <h2>Emergency Fund Calculator</h2>
+      <div class="form-grid">
+        <input type="number" id="emergencyMonthly" placeholder="Monthly essential costs (£)">
+        <input type="number" id="emergencyMonths" placeholder="Months to cover">
+      </div>
+      <button onclick="calculateEmergencyFund()">Calculate Fund</button>
+      <div id="emergencyResult" class="result-box"></div>
+    </section>
+
+    <section class="card">
+      <h2>Inflation Calculator</h2>
+      <div class="form-grid">
+        <input type="number" id="inflationAmount" placeholder="Amount today (£)">
+        <input type="number" id="inflationRate" placeholder="Inflation rate (%)" step="0.1">
+        <input type="number" id="inflationYears" placeholder="Years">
+      </div>
+      <button onclick="calculateInflation()">Calculate Inflation</button>
+      <div id="inflationResult" class="result-box"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

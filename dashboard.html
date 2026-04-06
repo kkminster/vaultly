@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vaultly - Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">V</div>
+      <div>
+        <h1>Vaultly</h1>
+        <p class="tagline">Dashboard</p>
+      </div>
+    </div>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="dashboard.html">Dashboard</a>
+      <a href="savings.html">Savings</a>
+      <a href="budget.html">Budget</a>
+      <a href="calculators.html">Calculators</a>
+    </nav>
+  </header>
+
+  <main class="page-container">
+    <section class="stats-grid">
+      <div class="mini-card">
+        <p>Total Saved</p>
+        <h3 id="dashTotalSaved">£0.00</h3>
+      </div>
+      <div class="mini-card">
+        <p>Total Remaining</p>
+        <h3 id="dashTotalRemaining">£0.00</h3>
+      </div>
+      <div class="mini-card">
+        <p>Completed Goals</p>
+        <h3 id="dashCompletedGoals">0</h3>
+      </div>
+      <div class="mini-card">
+        <p>This Month Expenses</p>
+        <h3 id="dashMonthExpenses">£0.00</h3>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Goals Close to Completion</h2>
+      <div id="closeGoalsList"></div>
+    </section>
+
+    <section class="card">
+      <h2>Urgent Deadlines</h2>
+      <div id="urgentGoalsList"></div>
+    </section>
+
+    <section class="card">
+      <h2>Recent Transactions</h2>
+      <div id="recentTransactions"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
