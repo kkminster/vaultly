@@ -758,3 +758,55 @@ updateSavingsStats();
 renderBudget();
 renderExpenses();
 renderDashboard();
+function calculateSalaryTax() {
+  const salaryInput = document.getElementById("salaryInput");
+  const result = document.getElementById("salaryResult");
+
+  if (!salaryInput || !result) return;
+
+  const salary = Number(salaryInput.value);
+
+  if (salary <= 0) {
+    result.innerHTML = "Please enter a valid annual salary.";
+    return;
+  }
+
+  let incomeTax = 0;
+  let nationalInsurance = 0;
+
+  const personalAllowance = 12570;
+  const basicRateLimit = 50270;
+
+  if (salary > personalAllowance) {
+    const basicTaxable = Math.min(salary, basicRateLimit) - personalAllowance;
+    if (basicTaxable > 0) {
+      incomeTax += basicTaxable * 0.20;
+    }
+  }
+
+  if (salary > basicRateLimit) {
+    incomeTax += (salary - basicRateLimit) * 0.40;
+  }
+
+  if (salary > personalAllowance) {
+    const basicNITaxable = Math.min(salary, basicRateLimit) - personalAllowance;
+    if (basicNITaxable > 0) {
+      nationalInsurance += basicNITaxable * 0.08;
+    }
+  }
+
+  if (salary > basicRateLimit) {
+    nationalInsurance += (salary - basicRateLimit) * 0.02;
+  }
+
+  const yearlyTakeHome = salary - incomeTax - nationalInsurance;
+  const monthlyTakeHome = yearlyTakeHome / 12;
+
+  result.innerHTML = `
+    <strong>Annual Salary:</strong> ${formatCurrency(salary)}<br>
+    <strong>Estimated Income Tax:</strong> ${formatCurrency(incomeTax)}<br>
+    <strong>Estimated National Insurance:</strong> ${formatCurrency(nationalInsurance)}<br>
+    <strong>Estimated Annual Take-home:</strong> ${formatCurrency(yearlyTakeHome)}<br>
+    <strong>Estimated Monthly Take-home:</strong> ${formatCurrency(monthlyTakeHome)}
+  `;
+}
