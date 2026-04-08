@@ -1,4 +1,6 @@
 (function () {
+  let savingsChart = null;
+
   function formatCurrencySafe(amount) {
     return typeof formatCurrency === "function"
       ? formatCurrency(amount)
@@ -59,6 +61,41 @@
     return goalsCopy;
   }
 
+  function renderSavingsChart() {
+    const canvas = document.getElementById("savingsChart");
+    if (!canvas || !Array.isArray(window.goals)) return;
+
+    const activeGoals = window.goals.filter(goal => !goal.archived);
+    const labels = activeGoals.map(goal => goal.name);
+    const savedData = activeGoals.map(goal => Number(goal.saved) || 0);
+    const targetData = activeGoals.map(goal => Number(goal.target) || 0);
+
+    if (savingsChart) {
+      savingsChart.destroy();
+    }
+
+    savingsChart = new Chart(canvas, {
+      type: "bar",
+      data: {
+        labels,
+        datasets: [
+          {
+            label: "Saved (£)",
+            data: savedData
+          },
+          {
+            label: "Target (£)",
+            data: targetData
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+  }
+
   window.applyRecurringDeposits = function () {
     if (!Array.isArray(window.goals) || window.goals.length === 0) {
       alert("No goals available.");
@@ -94,21 +131,19 @@
       return;
     }
 
-    const rows = [
-      [
-        "Name",
-        "Category",
-        "Priority",
-        "Target",
-        "Saved",
-        "Remaining",
-        "Deadline",
-        "Recurring Amount",
-        "Recurring Type",
-        "Archived",
-        "Notes"
-      ]
-    ];
+    const rows = [[
+      "Name",
+      "Category",
+      "Priority",
+      "Target",
+      "Saved",
+      "Remaining",
+      "Deadline",
+      "Recurring Amount",
+      "Recurring Type",
+      "Archived",
+      "Notes"
+    ]];
 
     window.goals.forEach(goal => {
       rows.push([
@@ -185,6 +220,7 @@
 
     if (filteredGoals.length === 0) {
       container.innerHTML = `<div class="empty-state">No goals found.</div>`;
+      renderSavingsChart();
       return;
     }
 
@@ -282,6 +318,8 @@
         </div>
       `;
     });
+
+    renderSavingsChart();
   };
 
   window.updateSavingsStats = function () {
@@ -315,10 +353,13 @@
     dueSoonEl.textContent = dueSoon;
     archivedEl.textContent = archivedGoals.length;
     recurringTotalEl.textContent = formatCurrencySafe(recurringTotal);
+
+    renderSavingsChart();
   };
 
   document.addEventListener("DOMContentLoaded", function () {
     if (typeof window.displayGoals === "function") window.displayGoals();
     if (typeof window.updateSavingsStats === "function") window.updateSavingsStats();
+    renderSavingsChart();
   });
 })();
