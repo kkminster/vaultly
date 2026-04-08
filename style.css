@@ -351,3 +351,13 @@ li {
   width: 100% !important;
   max-height: 320px;
 }
+.chart-wrap {
+  position: relative;
+  width: 100%;
+  height: 320px;
+}
+
+#budgetPieChart {
+  width: 100% !important;
+  height: 100% !important;
+}
