@@ -361,3 +361,45 @@ li {
   width: 100% !important;
   height: 100% !important;
 }
+.hero-section {
+  text-align: left;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.small-link-card {
+  max-width: 240px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.footer {
+  margin-top: 30px;
+  background: white;
+  padding: 20px 24px;
+  text-align: center;
+  box-shadow: 0 -4px 14px rgba(59, 130, 246, 0.08);
+}
+
+.footer p {
+  margin: 0 0 10px;
+  color: #5f89b7;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #2563eb;
+  font-weight: bold;
+}
