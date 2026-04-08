@@ -346,3 +346,8 @@ li {
   color: #2563eb;
   font-weight: bold;
 }
+
+#budgetPieChart {
+  width: 100% !important;
+  max-height: 320px;
+}
