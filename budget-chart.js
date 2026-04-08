@@ -1,11 +1,19 @@
 (function () {
   let budgetPieChart = null;
 
-  function getExpenseCategoryTotals() {
-    if (!Array.isArray(window.expenses)) return {};
+  function readExpenses() {
+    try {
+      return JSON.parse(localStorage.getItem("vaultlyExpenses")) || [];
+    } catch {
+      return [];
+    }
+  }
 
+  function getExpenseCategoryTotals() {
+    const expenses = readExpenses();
     const totals = {};
-    window.expenses.forEach(expense => {
+
+    expenses.forEach(expense => {
       const category = expense.category || "Other";
       totals[category] = (totals[category] || 0) + Number(expense.amount || 0);
     });
@@ -23,11 +31,13 @@
 
     if (budgetPieChart) {
       budgetPieChart.destroy();
+      budgetPieChart = null;
     }
 
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     if (labels.length === 0) {
-      const ctx = canvas.getContext("2d");
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
       return;
     }
 
@@ -52,26 +62,26 @@
   const originalClearExpenses = window.clearExpenses;
   const originalRenderExpenses = window.renderExpenses;
 
-  window.addExpense = function () {
-    if (typeof originalAddExpense === "function") {
+  if (typeof originalAddExpense === "function") {
+    window.addExpense = function () {
       originalAddExpense();
-    }
-    renderBudgetPieChart();
-  };
+      renderBudgetPieChart();
+    };
+  }
 
-  window.clearExpenses = function () {
-    if (typeof originalClearExpenses === "function") {
+  if (typeof originalClearExpenses === "function") {
+    window.clearExpenses = function () {
       originalClearExpenses();
-    }
-    renderBudgetPieChart();
-  };
+      renderBudgetPieChart();
+    };
+  }
 
-  window.renderExpenses = function () {
-    if (typeof originalRenderExpenses === "function") {
+  if (typeof originalRenderExpenses === "function") {
+    window.renderExpenses = function () {
       originalRenderExpenses();
-    }
-    renderBudgetPieChart();
-  };
+      renderBudgetPieChart();
+    };
+  }
 
   document.addEventListener("DOMContentLoaded", function () {
     renderBudgetPieChart();
