@@ -22,10 +22,23 @@
       <a href="savings.html">Savings</a>
       <a href="budget.html">Budget</a>
       <a href="calculators.html">Calculators</a>
+      <a href="calculator-guides.html">Guides</a>
+      <a href="about.html">About</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
 
   <main class="page-container">
+    <section class="card">
+      <h2>UK Salary After Tax Calculator</h2>
+      <div class="form-grid">
+        <input type="number" id="salaryInput" placeholder="Annual salary (£)">
+      </div>
+      <button onclick="calculateSalaryTax()">Calculate Salary</button>
+      <div id="salaryResult" class="result-box"></div>
+    </section>
+
     <section class="card">
       <h2>UK Loan Calculator</h2>
       <div class="form-grid">
