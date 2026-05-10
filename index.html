@@ -182,4 +182,25 @@
 </footer>
 
 </body>
+  <div id="cookieBanner" class="cookie-banner">
+  <p>
+    Vaultly uses cookies and local storage to improve your experience.
+  </p>
+
+  <button onclick="acceptCookies()">Accept</button>
+</div>
+
+<script>
+function acceptCookies() {
+  localStorage.setItem("vaultlyCookiesAccepted", "true");
+  document.getElementById("cookieBanner").style.display = "none";
+}
+
+if (localStorage.getItem("vaultlyCookiesAccepted") === "true") {
+  document.addEventListener("DOMContentLoaded", () => {
+    const banner = document.getElementById("cookieBanner");
+    if (banner) banner.style.display = "none";
+  });
+}
+</script>
 </html>
