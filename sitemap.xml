@@ -1,11 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <url><loc>https://kkminster.github.io/vaultly/</loc></url>
-  <url><loc>https://kkminster.github.io/vaultly/savings.html</loc></url>
-  <url><loc>https://kkminster.github.io/vaultly/budget.html</loc></url>
-  <url><loc>https://kkminster.github.io/vaultly/calculators.html</loc></url>
-  <url><loc>https://kkminster.github.io/vaultly/about.html</loc></url>
-  <url><loc>https://kkminster.github.io/vaultly/privacy.html</loc></url>
+  <url>
+    <loc>https://kkminster.github.io/</loc>
+  </url>
+
+  <url>
+    <loc>https://kkminster.github.io/about.html</loc>
+  </url>
+
+  <url>
+    <loc>https://kkminster.github.io/privacy.html</loc>
+  </url>
+
+  <url>
+    <loc>https://kkminster.github.io/contact.html</loc>
+  </url>
+
+  <url>
+    <loc>https://kkminster.github.io/savings.html</loc>
+  </url>
+
+  <url>
+    <loc>https://kkminster.github.io/budget.html</loc>
+  </url>
+
+  <url>
+    <loc>https://kkminster.github.io/calculators.html</loc>
+  </url>
+
+  <url>
+    <loc>https://kkminster.github.io/save-money-uk.html</loc>
+  </url>
+
+  <url>
+    <loc>https://kkminster.github.io/how-to-budget.html</loc>
+  </url>
+
+  <url>
+    <loc>https://kkminster.github.io/pay-off-debt-faster.html</loc>
+  </url>
+
+  <url>
+    <loc>https://kkminster.github.io/how-much-to-save.html</loc>
+  </url>
+
+  <url>
+    <loc>https://kkminster.github.io/what-is-apr.html</loc>
+  </url>
+
+  <url>
+    <loc>https://kkminster.github.io/save-vs-debt.html</loc>
+  </url>
 
 </urlset>
